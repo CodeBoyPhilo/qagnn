@@ -1,0 +1,366 @@
+7a94ffc0a1b3
+pid: 641
+conda env: qagnn
+screen: 
+
+gpu: 0,1
+
+Namespace(att_head_num=2, batch_size=64, cuda=True, dataset='csqa', debug=False, decoder_lr=0.001, dev_adj='data/csqa/graph/dev.graph.adj.pk', dev_statements='data/csqa/statement/dev.statement.jsonl', drop_partial_batch=False, dropoutf=0.2, dropoutg=0.2, dropouti=0.2, encoder='roberta-large', encoder_layer=-1, encoder_lr=1e-05, ent_emb=['tzw'], ent_emb_paths=['data/cpnet/tzw.ent.npy'], eval_batch_size=2, fc_dim=200, fc_layer_num=0, fill_partial_batch=False, fp16=True, freeze_ent_emb=True, gnn_dim=200, inhouse=True, inhouse_train_qids='data/csqa/inhouse_split_qids.txt', init_range=0.02, k=5, load_model_path=None, log_interval=10, loss='cross_entropy', lr_schedule='fixed', max_epochs_before_stop=10, max_grad_norm=1.0, max_node_num=200, max_seq_len=100, mini_batch_size=2, mode='train', n_epochs=15, num_relation=38, optim='radam', refreeze_epoch=10000, save_dir='saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354', save_model=True, seed=0, simple=False, subsample=1.0, test_adj='data/csqa/graph/test.graph.adj.pk', test_statements='data/csqa/statement/test.statement.jsonl', train_adj='data/csqa/graph/train.graph.adj.pk', train_statements='data/csqa/statement/train.statement.jsonl', unfreeze_epoch=4, use_cache=True, warmup_steps=150, weight_decay=0.01)
+| num_concepts: 799273 |
+train_statement_path data/csqa/statement/train.statement.jsonl
+num_choice 5
+| ori_adj_len: mu 121.54 sigma 94.04 | adj_len: 107.96 | prune_rate： 0.17 | qc_num: 7.43 | ac_num: 2.07 |
+| ori_adj_len: mu 118.44 sigma 90.55 | adj_len: 106.55 | prune_rate： 0.15 | qc_num: 7.20 | ac_num: 2.05 |
+| ori_adj_len: mu 119.20 sigma 93.49 | adj_len: 106.22 | prune_rate： 0.16 | qc_num: 7.38 | ac_num: 2.05 |
+args.num_relation 38
+parameters:
+	concept_emb.emb.weight                       	fixed	torch.Size([799273, 1024])	device:cuda:0
+	concept_emb.cpt_transform.weight             	trainable	torch.Size([200, 1024])	device:cuda:0
+	concept_emb.cpt_transform.bias               	trainable	torch.Size([200])	device:cuda:0
+	svec2nvec.weight                             	trainable	torch.Size([200, 1024])	device:cuda:0
+	svec2nvec.bias                               	trainable	torch.Size([200])	device:cuda:0
+	gnn.emb_node_type.weight                     	trainable	torch.Size([100, 4])	device:cuda:0
+	gnn.emb_node_type.bias                       	trainable	torch.Size([100])	device:cuda:0
+	gnn.emb_score.weight                         	trainable	torch.Size([100, 100])	device:cuda:0
+	gnn.emb_score.bias                           	trainable	torch.Size([100])	device:cuda:0
+	gnn.edge_encoder.0.weight                    	trainable	torch.Size([200, 47])	device:cuda:0
+	gnn.edge_encoder.0.bias                      	trainable	torch.Size([200])	device:cuda:0
+	gnn.edge_encoder.1.weight                    	trainable	torch.Size([200])	device:cuda:0
+	gnn.edge_encoder.1.bias                      	trainable	torch.Size([200])	device:cuda:0
+	gnn.edge_encoder.3.weight                    	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.edge_encoder.3.bias                      	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.0.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.0.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.0.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.0.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.1.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.1.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.1.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.1.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.2.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.2.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.2.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.2.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.3.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.3.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.3.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.3.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.linear_key.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.4.linear_key.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.linear_msg.weight           	trainable	torch.Size([200, 600])	device:cuda:0
+	gnn.gnn_layers.4.linear_msg.bias             	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.linear_query.weight         	trainable	torch.Size([200, 400])	device:cuda:0
+	gnn.gnn_layers.4.linear_query.bias           	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.0.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.0.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.1.weight                	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.1.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.3.weight                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.gnn_layers.4.mlp.3.bias                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.Vh.weight                                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.Vh.bias                                  	trainable	torch.Size([200])	device:cuda:0
+	gnn.Vx.weight                                	trainable	torch.Size([200, 200])	device:cuda:0
+	gnn.Vx.bias                                  	trainable	torch.Size([200])	device:cuda:0
+	pooler.w_qs.weight                           	trainable	torch.Size([200, 1024])	device:cuda:0
+	pooler.w_qs.bias                             	trainable	torch.Size([200])	device:cuda:0
+	pooler.w_ks.weight                           	trainable	torch.Size([200, 200])	device:cuda:0
+	pooler.w_ks.bias                             	trainable	torch.Size([200])	device:cuda:0
+	pooler.w_vs.weight                           	trainable	torch.Size([200, 200])	device:cuda:0
+	pooler.w_vs.bias                             	trainable	torch.Size([200])	device:cuda:0
+	fc.layers.0-Linear.weight                    	trainable	torch.Size([1, 1424])	device:cuda:0
+	fc.layers.0-Linear.bias                      	trainable	torch.Size([1])	device:cuda:0
+	total: 2845025
+
+-----------------------------------------------------------------------
+Using fp16 training
+| step     9 |  lr: 0.0000100 | loss  1.6204 | ms/batch 2661.44 |
+| step    19 |  lr: 0.0000100 | loss  1.6225 | ms/batch 2580.49 |
+| step    29 |  lr: 0.0000100 | loss  1.6093 | ms/batch 2607.69 |
+| step    39 |  lr: 0.0000100 | loss  1.5780 | ms/batch 2738.36 |
+| step    49 |  lr: 0.0000100 | loss  1.5506 | ms/batch 2742.57 |
+| step    59 |  lr: 0.0000100 | loss  1.5618 | ms/batch 2647.99 |
+| step    69 |  lr: 0.0000100 | loss  1.5306 | ms/batch 2621.03 |
+| step    79 |  lr: 0.0000100 | loss  1.5207 | ms/batch 2850.52 |
+| step    89 |  lr: 0.0000100 | loss  1.5418 | ms/batch 2860.63 |
+| step    99 |  lr: 0.0000100 | loss  1.4951 | ms/batch 2869.10 |
+| step   109 |  lr: 0.0000100 | loss  1.5098 | ms/batch 2728.97 |
+| step   119 |  lr: 0.0000100 | loss  1.4850 | ms/batch 2731.79 |
+| step   129 |  lr: 0.0000100 | loss  1.4273 | ms/batch 2787.85 |
+-----------------------------------------------------------------------
+| epoch   0 | step   133 | dev_acc  0.3989 | test_acc  0.3795 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.0
+| step   139 |  lr: 0.0000100 | loss  1.4567 | ms/batch 1962.93 |
+| step   149 |  lr: 0.0000100 | loss  1.4718 | ms/batch 2810.33 |
+| step   159 |  lr: 0.0000100 | loss  1.4274 | ms/batch 2779.41 |
+| step   169 |  lr: 0.0000100 | loss  1.4504 | ms/batch 2709.71 |
+| step   179 |  lr: 0.0000100 | loss  1.3931 | ms/batch 2710.70 |
+| step   189 |  lr: 0.0000100 | loss  1.3820 | ms/batch 2839.69 |
+| step   199 |  lr: 0.0000100 | loss  1.3830 | ms/batch 2817.87 |
+| step   209 |  lr: 0.0000100 | loss  1.3829 | ms/batch 2612.44 |
+| step   219 |  lr: 0.0000100 | loss  1.4266 | ms/batch 2558.01 |
+| step   229 |  lr: 0.0000100 | loss  1.3811 | ms/batch 2533.47 |
+| step   239 |  lr: 0.0000100 | loss  1.3517 | ms/batch 2818.95 |
+| step   249 |  lr: 0.0000100 | loss  1.3529 | ms/batch 2857.49 |
+| step   259 |  lr: 0.0000100 | loss  1.3970 | ms/batch 2823.18 |
+-----------------------------------------------------------------------
+| epoch   1 | step   266 | dev_acc  0.4341 | test_acc  0.4295 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.1
+| step   269 |  lr: 0.0000100 | loss  1.3833 | ms/batch 1104.08 |
+| step   279 |  lr: 0.0000100 | loss  1.3756 | ms/batch 2738.37 |
+| step   289 |  lr: 0.0000100 | loss  1.3833 | ms/batch 2780.07 |
+| step   299 |  lr: 0.0000100 | loss  1.3309 | ms/batch 2730.78 |
+| step   309 |  lr: 0.0000100 | loss  1.3597 | ms/batch 2736.91 |
+| step   319 |  lr: 0.0000100 | loss  1.3412 | ms/batch 2685.14 |
+| step   329 |  lr: 0.0000100 | loss  1.4176 | ms/batch 2827.41 |
+| step   339 |  lr: 0.0000100 | loss  1.3552 | ms/batch 2847.87 |
+| step   349 |  lr: 0.0000100 | loss  1.3994 | ms/batch 2852.30 |
+| step   359 |  lr: 0.0000100 | loss  1.3926 | ms/batch 2839.26 |
+| step   369 |  lr: 0.0000100 | loss  1.3168 | ms/batch 2752.60 |
+| step   379 |  lr: 0.0000100 | loss  1.3270 | ms/batch 2808.00 |
+| step   389 |  lr: 0.0000100 | loss  1.3663 | ms/batch 2864.08 |
+-----------------------------------------------------------------------
+| epoch   2 | step   399 | dev_acc  0.4300 | test_acc  0.4182 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.2
+| step   399 |  lr: 0.0000100 | loss  1.4000 | ms/batch  293.28 |
+| step   409 |  lr: 0.0000100 | loss  1.3268 | ms/batch 2770.72 |
+| step   419 |  lr: 0.0000100 | loss  1.3630 | ms/batch 2802.36 |
+| step   429 |  lr: 0.0000100 | loss  1.3269 | ms/batch 2805.99 |
+| step   439 |  lr: 0.0000100 | loss  1.3634 | ms/batch 2781.53 |
+| step   449 |  lr: 0.0000100 | loss  1.3486 | ms/batch 2817.12 |
+| step   459 |  lr: 0.0000100 | loss  1.3234 | ms/batch 2911.86 |
+| step   469 |  lr: 0.0000100 | loss  1.3202 | ms/batch 2909.68 |
+| step   479 |  lr: 0.0000100 | loss  1.3469 | ms/batch 2700.48 |
+| step   489 |  lr: 0.0000100 | loss  1.3543 | ms/batch 2881.10 |
+| step   499 |  lr: 0.0000100 | loss  1.3513 | ms/batch 2908.97 |
+| step   509 |  lr: 0.0000100 | loss  1.3685 | ms/batch 2929.86 |
+| step   519 |  lr: 0.0000100 | loss  1.3615 | ms/batch 2799.69 |
+| step   529 |  lr: 0.0000100 | loss  1.3484 | ms/batch 2840.15 |
+-----------------------------------------------------------------------
+| epoch   3 | step   532 | dev_acc  0.4455 | test_acc  0.4295 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.3
+| step   539 |  lr: 0.0000100 | loss  1.3153 | ms/batch 2514.36 |
+| step   549 |  lr: 0.0000100 | loss  1.3582 | ms/batch 3232.49 |
+| step   559 |  lr: 0.0000100 | loss  1.3227 | ms/batch 3300.12 |
+| step   569 |  lr: 0.0000100 | loss  1.2763 | ms/batch 3240.26 |
+| step   579 |  lr: 0.0000100 | loss  1.2928 | ms/batch 3279.86 |
+| step   589 |  lr: 0.0000100 | loss  1.3146 | ms/batch 3189.73 |
+| step   599 |  lr: 0.0000100 | loss  1.2976 | ms/batch 3241.13 |
+| step   609 |  lr: 0.0000100 | loss  1.3396 | ms/batch 3209.20 |
+| step   619 |  lr: 0.0000100 | loss  1.3064 | ms/batch 3179.57 |
+| step   629 |  lr: 0.0000100 | loss  1.2936 | ms/batch 3238.83 |
+| step   639 |  lr: 0.0000100 | loss  1.2882 | ms/batch 3240.55 |
+| step   649 |  lr: 0.0000100 | loss  1.3276 | ms/batch 3229.23 |
+| step   659 |  lr: 0.0000100 | loss  1.3389 | ms/batch 3279.24 |
+-----------------------------------------------------------------------
+| epoch   4 | step   665 | dev_acc  0.4537 | test_acc  0.4424 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.4
+| step   669 |  lr: 0.0000100 | loss  1.3133 | ms/batch 1668.84 |
+| step   679 |  lr: 0.0000100 | loss  1.2648 | ms/batch 3235.76 |
+| step   689 |  lr: 0.0000100 | loss  1.3010 | ms/batch 3239.66 |
+| step   699 |  lr: 0.0000100 | loss  1.3167 | ms/batch 3249.85 |
+| step   709 |  lr: 0.0000100 | loss  1.3110 | ms/batch 3208.16 |
+| step   719 |  lr: 0.0000100 | loss  1.3506 | ms/batch 3225.84 |
+| step   729 |  lr: 0.0000100 | loss  1.3210 | ms/batch 3225.97 |
+| step   739 |  lr: 0.0000100 | loss  1.3335 | ms/batch 3280.73 |
+| step   749 |  lr: 0.0000100 | loss  1.3182 | ms/batch 3250.05 |
+| step   759 |  lr: 0.0000100 | loss  1.3561 | ms/batch 3189.53 |
+| step   769 |  lr: 0.0000100 | loss  1.3044 | ms/batch 3199.78 |
+| step   779 |  lr: 0.0000100 | loss  1.3106 | ms/batch 3220.32 |
+| step   789 |  lr: 0.0000100 | loss  1.2977 | ms/batch 3209.36 |
+-----------------------------------------------------------------------
+| epoch   5 | step   798 | dev_acc  0.4611 | test_acc  0.4376 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.5
+| step   799 |  lr: 0.0000100 | loss  1.3119 | ms/batch  647.20 |
+| step   809 |  lr: 0.0000100 | loss  1.2871 | ms/batch 3306.61 |
+| step   819 |  lr: 0.0000100 | loss  1.2929 | ms/batch 3278.91 |
+| step   829 |  lr: 0.0000100 | loss  1.2804 | ms/batch 3238.17 |
+| step   839 |  lr: 0.0000100 | loss  1.3149 | ms/batch 3250.56 |
+| step   849 |  lr: 0.0000100 | loss  1.3103 | ms/batch 3253.14 |
+| step   859 |  lr: 0.0000100 | loss  1.3021 | ms/batch 3278.37 |
+| step   869 |  lr: 0.0000100 | loss  1.2879 | ms/batch 3251.68 |
+| step   879 |  lr: 0.0000100 | loss  1.3040 | ms/batch 3288.63 |
+| step   889 |  lr: 0.0000100 | loss  1.2713 | ms/batch 3279.76 |
+| step   899 |  lr: 0.0000100 | loss  1.3173 | ms/batch 3239.16 |
+| step   909 |  lr: 0.0000100 | loss  1.3570 | ms/batch 3201.25 |
+| step   919 |  lr: 0.0000100 | loss  1.3172 | ms/batch 3330.54 |
+| step   929 |  lr: 0.0000100 | loss  1.3503 | ms/batch 3258.97 |
+-----------------------------------------------------------------------
+| epoch   6 | step   931 | dev_acc  0.4545 | test_acc  0.4335 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.6
+| step   939 |  lr: 0.0000100 | loss  1.3129 | ms/batch 2937.39 |
+| step   949 |  lr: 0.0000100 | loss  1.2809 | ms/batch 3250.89 |
+| step   959 |  lr: 0.0000100 | loss  1.3053 | ms/batch 3281.34 |
+| step   969 |  lr: 0.0000100 | loss  1.3171 | ms/batch 3237.55 |
+| step   979 |  lr: 0.0000100 | loss  1.2799 | ms/batch 3211.34 |
+| step   989 |  lr: 0.0000100 | loss  1.3379 | ms/batch 3283.10 |
+| step   999 |  lr: 0.0000100 | loss  1.2931 | ms/batch 3266.32 |
+| step  1009 |  lr: 0.0000100 | loss  1.2751 | ms/batch 3380.70 |
+| step  1019 |  lr: 0.0000100 | loss  1.3251 | ms/batch 3249.81 |
+| step  1029 |  lr: 0.0000100 | loss  1.3330 | ms/batch 3270.27 |
+| step  1039 |  lr: 0.0000100 | loss  1.3126 | ms/batch 3277.78 |
+| step  1049 |  lr: 0.0000100 | loss  1.2943 | ms/batch 3249.24 |
+| step  1059 |  lr: 0.0000100 | loss  1.2577 | ms/batch 3252.42 |
+-----------------------------------------------------------------------
+| epoch   7 | step  1064 | dev_acc  0.4717 | test_acc  0.4706 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.7
+| step  1069 |  lr: 0.0000100 | loss  1.3100 | ms/batch 1993.65 |
+| step  1079 |  lr: 0.0000100 | loss  1.2127 | ms/batch 3254.05 |
+| step  1089 |  lr: 0.0000100 | loss  1.1910 | ms/batch 3280.67 |
+| step  1099 |  lr: 0.0000100 | loss  1.1845 | ms/batch 3238.66 |
+| step  1109 |  lr: 0.0000100 | loss  1.2187 | ms/batch 3227.85 |
+| step  1119 |  lr: 0.0000100 | loss  1.1979 | ms/batch 3192.24 |
+| step  1129 |  lr: 0.0000100 | loss  1.2115 | ms/batch 3239.61 |
+| step  1139 |  lr: 0.0000100 | loss  1.2440 | ms/batch 3240.29 |
+| step  1149 |  lr: 0.0000100 | loss  1.2025 | ms/batch 3239.16 |
+| step  1159 |  lr: 0.0000100 | loss  1.2114 | ms/batch 3251.41 |
+| step  1169 |  lr: 0.0000100 | loss  1.1718 | ms/batch 3229.83 |
+| step  1179 |  lr: 0.0000100 | loss  1.1768 | ms/batch 3257.87 |
+| step  1189 |  lr: 0.0000100 | loss  1.1311 | ms/batch 3231.80 |
+-----------------------------------------------------------------------
+| epoch   8 | step  1197 | dev_acc  0.5356 | test_acc  0.5044 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.8
+| step  1199 |  lr: 0.0000100 | loss  1.1402 | ms/batch  964.23 |
+| step  1209 |  lr: 0.0000100 | loss  1.0872 | ms/batch 3309.84 |
+| step  1219 |  lr: 0.0000100 | loss  1.0277 | ms/batch 3219.95 |
+| step  1229 |  lr: 0.0000100 | loss  1.1507 | ms/batch 3262.09 |
+| step  1239 |  lr: 0.0000100 | loss  1.0254 | ms/batch 3308.30 |
+| step  1249 |  lr: 0.0000100 | loss  1.0389 | ms/batch 3273.95 |
+| step  1259 |  lr: 0.0000100 | loss  1.0913 | ms/batch 3294.06 |
+| step  1269 |  lr: 0.0000100 | loss  1.0851 | ms/batch 3252.30 |
+| step  1279 |  lr: 0.0000100 | loss  1.0120 | ms/batch 3290.09 |
+| step  1289 |  lr: 0.0000100 | loss  1.0309 | ms/batch 3219.49 |
+| step  1299 |  lr: 0.0000100 | loss  1.0172 | ms/batch 3288.66 |
+| step  1309 |  lr: 0.0000100 | loss  0.9657 | ms/batch 3205.31 |
+| step  1319 |  lr: 0.0000100 | loss  0.8730 | ms/batch 3236.17 |
+| step  1329 |  lr: 0.0000100 | loss  0.8798 | ms/batch 3209.60 |
+-----------------------------------------------------------------------
+| epoch   9 | step  1330 | dev_acc  0.7011 | test_acc  0.6761 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.9
+| step  1339 |  lr: 0.0000100 | loss  0.8380 | ms/batch 3256.71 |
+| step  1349 |  lr: 0.0000100 | loss  0.7770 | ms/batch 3278.93 |
+| step  1359 |  lr: 0.0000100 | loss  0.7214 | ms/batch 3224.54 |
+| step  1369 |  lr: 0.0000100 | loss  0.7555 | ms/batch 3246.91 |
+| step  1379 |  lr: 0.0000100 | loss  0.7219 | ms/batch 3238.02 |
+| step  1389 |  lr: 0.0000100 | loss  0.7588 | ms/batch 3281.23 |
+| step  1399 |  lr: 0.0000100 | loss  0.7649 | ms/batch 3363.21 |
+| step  1409 |  lr: 0.0000100 | loss  0.7504 | ms/batch 3276.45 |
+| step  1419 |  lr: 0.0000100 | loss  0.6594 | ms/batch 3288.39 |
+| step  1429 |  lr: 0.0000100 | loss  0.7175 | ms/batch 3294.48 |
+| step  1439 |  lr: 0.0000100 | loss  0.7334 | ms/batch 3276.76 |
+| step  1449 |  lr: 0.0000100 | loss  0.7581 | ms/batch 3259.97 |
+| step  1459 |  lr: 0.0000100 | loss  0.7200 | ms/batch 3250.63 |
+-----------------------------------------------------------------------
+| epoch  10 | step  1463 | dev_acc  0.7461 | test_acc  0.7083 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.10
+| step  1469 |  lr: 0.0000100 | loss  0.6130 | ms/batch 2310.07 |
+| step  1479 |  lr: 0.0000100 | loss  0.5982 | ms/batch 3220.28 |
+| step  1489 |  lr: 0.0000100 | loss  0.6307 | ms/batch 3260.21 |
+| step  1499 |  lr: 0.0000100 | loss  0.6060 | ms/batch 3228.65 |
+| step  1509 |  lr: 0.0000100 | loss  0.6286 | ms/batch 3164.63 |
+| step  1519 |  lr: 0.0000100 | loss  0.5458 | ms/batch 3225.57 |
+| step  1529 |  lr: 0.0000100 | loss  0.5832 | ms/batch 3310.49 |
+| step  1539 |  lr: 0.0000100 | loss  0.5367 | ms/batch 3246.21 |
+| step  1549 |  lr: 0.0000100 | loss  0.5679 | ms/batch 3198.83 |
+| step  1559 |  lr: 0.0000100 | loss  0.5695 | ms/batch 3215.49 |
+| step  1569 |  lr: 0.0000100 | loss  0.6399 | ms/batch 3229.41 |
+| step  1579 |  lr: 0.0000100 | loss  0.5852 | ms/batch 3219.91 |
+| step  1589 |  lr: 0.0000100 | loss  0.6040 | ms/batch 3267.64 |
+-----------------------------------------------------------------------
+| epoch  11 | step  1596 | dev_acc  0.7666 | test_acc  0.7212 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.11
+| step  1599 |  lr: 0.0000100 | loss  0.5817 | ms/batch 1292.33 |
+| step  1609 |  lr: 0.0000100 | loss  0.4232 | ms/batch 3300.75 |
+| step  1619 |  lr: 0.0000100 | loss  0.4432 | ms/batch 3328.13 |
+| step  1629 |  lr: 0.0000100 | loss  0.4887 | ms/batch 3260.09 |
+| step  1639 |  lr: 0.0000100 | loss  0.4738 | ms/batch 3273.00 |
+| step  1649 |  lr: 0.0000100 | loss  0.4798 | ms/batch 3351.35 |
+| step  1659 |  lr: 0.0000100 | loss  0.4683 | ms/batch 3270.61 |
+| step  1669 |  lr: 0.0000100 | loss  0.3632 | ms/batch 3285.56 |
+| step  1679 |  lr: 0.0000100 | loss  0.4554 | ms/batch 3230.16 |
+| step  1689 |  lr: 0.0000100 | loss  0.4906 | ms/batch 3222.96 |
+| step  1699 |  lr: 0.0000100 | loss  0.4249 | ms/batch 3247.72 |
+| step  1709 |  lr: 0.0000100 | loss  0.4239 | ms/batch 3229.59 |
+| step  1719 |  lr: 0.0000100 | loss  0.4552 | ms/batch 3249.77 |
+-----------------------------------------------------------------------
+| epoch  12 | step  1729 | dev_acc  0.7649 | test_acc  0.7276 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.12
+| step  1729 |  lr: 0.0000100 | loss  0.5022 | ms/batch  304.67 |
+| step  1739 |  lr: 0.0000100 | loss  0.3668 | ms/batch 3208.48 |
+| step  1749 |  lr: 0.0000100 | loss  0.3067 | ms/batch 3200.09 |
+| step  1759 |  lr: 0.0000100 | loss  0.3336 | ms/batch 3200.66 |
+| step  1769 |  lr: 0.0000100 | loss  0.3229 | ms/batch 3240.14 |
+| step  1779 |  lr: 0.0000100 | loss  0.3494 | ms/batch 3239.50 |
+| step  1789 |  lr: 0.0000100 | loss  0.3529 | ms/batch 3229.81 |
+| step  1799 |  lr: 0.0000100 | loss  0.3081 | ms/batch 3250.08 |
+| step  1809 |  lr: 0.0000100 | loss  0.3592 | ms/batch 3239.74 |
+| step  1819 |  lr: 0.0000100 | loss  0.3354 | ms/batch 3245.54 |
+| step  1829 |  lr: 0.0000100 | loss  0.3369 | ms/batch 3264.28 |
+| step  1839 |  lr: 0.0000100 | loss  0.3641 | ms/batch 3223.10 |
+| step  1849 |  lr: 0.0000100 | loss  0.3516 | ms/batch 3230.74 |
+| step  1859 |  lr: 0.0000100 | loss  0.3203 | ms/batch 3246.89 |
+-----------------------------------------------------------------------
+| epoch  13 | step  1862 | dev_acc  0.7641 | test_acc  0.7228 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.13
+| step  1869 |  lr: 0.0000100 | loss  0.2420 | ms/batch 2587.54 |
+| step  1879 |  lr: 0.0000100 | loss  0.2605 | ms/batch 3269.14 |
+| step  1889 |  lr: 0.0000100 | loss  0.3219 | ms/batch 3258.70 |
+| step  1899 |  lr: 0.0000100 | loss  0.3220 | ms/batch 3303.07 |
+| step  1909 |  lr: 0.0000100 | loss  0.2438 | ms/batch 3262.56 |
+| step  1919 |  lr: 0.0000100 | loss  0.2701 | ms/batch 3306.47 |
+| step  1929 |  lr: 0.0000100 | loss  0.3139 | ms/batch 3250.01 |
+| step  1939 |  lr: 0.0000100 | loss  0.2408 | ms/batch 3239.80 |
+| step  1949 |  lr: 0.0000100 | loss  0.1990 | ms/batch 3200.40 |
+| step  1959 |  lr: 0.0000100 | loss  0.2765 | ms/batch 3219.64 |
+| step  1969 |  lr: 0.0000100 | loss  0.2593 | ms/batch 3220.17 |
+| step  1979 |  lr: 0.0000100 | loss  0.3273 | ms/batch 3229.08 |
+| step  1989 |  lr: 0.0000100 | loss  0.2625 | ms/batch 3260.46 |
+-----------------------------------------------------------------------
+| epoch  14 | step  1995 | dev_acc  0.7682 | test_acc  0.7188 |
+-----------------------------------------------------------------------
+model saved to saved_models/csqa/enc-roberta-large__k5__gnndim200__bs64__seed0__20240727_120354/model.pt.14
